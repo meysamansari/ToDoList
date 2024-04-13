@@ -37,7 +37,9 @@ class TaskController extends Controller
 
         $data = $request->validated();
         $data['user_id'] = auth()->id();
-        $data['status'] = $data['status'] ?? 'todo';
+        if (!isset($data['status'])) {
+            $data['status'] = 'todo';
+        }
         $task = $this->taskRepository->create($data);
         return new TaskResource($task);
     }

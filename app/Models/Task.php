@@ -17,13 +17,11 @@ class Task extends Model
         'title',
         'description',
         'due_date',
+        'status',
     ];
 
     protected $casts = [
         'due_date' => 'date',
-    ];
-    protected $attributes = [
-        'status' => 'todo',
     ];
 
     public function user(): BelongsTo
